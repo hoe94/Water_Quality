@@ -1,0 +1,11 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py
+    deps:
+    - path: data/raw/water_potability.csv
+      md5: aafa784ad6c2cd060df038c343956a1d
+      size: 525187
+    - path: src/load_data.py
+      md5: 28c72debde54fd16a2b9a09061ec33b5
+      size: 219
