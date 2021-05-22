@@ -10,12 +10,12 @@ stages:
       md5: 28c72debde54fd16a2b9a09061ec33b5
       size: 219
   split_data:
-    cmd: python src/preprocessing.py
+    cmd: python src/split_data.py
     deps:
     - path: data/raw/water_potability.csv
       md5: aafa784ad6c2cd060df038c343956a1d
       size: 525187
-    - path: src/preprocessing.py
+    - path: src/split_data.py
       md5: bba3ea7080c3954490e7dcfd85e1b729
       size: 881
     outs:
@@ -25,3 +25,15 @@ stages:
     - path: data/processed/train_waterq.csv
       md5: 102411750eb07e5aa159675023e68db6
       size: 442370
+  feature_scaling:
+    cmd: python src/feature_scaling.py
+    deps:
+    - path: data/processed/test_waterq.csv
+      md5: da0247367fcfac996dd916b0f9d2d92a
+      size: 110822
+    - path: data/processed/train_waterq.csv
+      md5: 102411750eb07e5aa159675023e68db6
+      size: 442370
+    - path: src/feature_scaling.py
+      md5: c0acc254f484bb5b1ecc1f44be65dc42
+      size: 677
