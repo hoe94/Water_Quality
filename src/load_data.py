@@ -1,10 +1,10 @@
 import hydra
 import pandas as pd
 
-@hydra.main(config_name='config.yaml')
-def main(config):
-    df = pd.read_csv(config.dataset.raw)
-    print(df.head())
+@hydra.main(config_name = '../config.yaml')
+def load_data(config):
+    df = pd.read_csv(config.dataset.raw, sep = '')
+    return df
 
 if __name__ == "__main__":
-    main()
+    load_data()
