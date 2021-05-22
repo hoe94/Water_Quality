@@ -1,0 +1,7 @@
+dataset:
+  raw: data/raw/water_potability.csv
+split_data:
+  train_path: ../data/processed/train_waterq.csv
+  test_path: ../data/processed/test_waterq.csv
+  test_size: 0.2
+  random_state: 42

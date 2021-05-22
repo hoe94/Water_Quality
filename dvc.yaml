@@ -4,3 +4,12 @@ stages:
     deps:
     - src/load_data.py
     - data/raw/water_potability.csv
+
+  split_data:
+    cmd: python src/preprocessing.py
+    deps:
+    - src/preprocessing.py
+    - data/raw/water_potability.csv
+    outs:
+    - data/processed/train_waterq.csv
+    - data/processed/test_waterq.csv

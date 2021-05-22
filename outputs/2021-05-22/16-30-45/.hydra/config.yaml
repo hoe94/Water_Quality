@@ -1,0 +1,6 @@
+dataset:
+  raw: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/data/raw/water_potability.csv
+split_data:
+  train_path: data/processed/train_waterq.csv
+  test_path: data/processed/test_waterq..csv
+  test_size: 0.2
