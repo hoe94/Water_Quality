@@ -1,0 +1,34 @@
+dataset:
+  raw: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/data/raw/water_potability.csv
+split_data:
+  train_path: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/data/processed/train_waterq.csv
+  test_path: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/data/processed/test_waterq.csv
+  test_size: 0.2
+  random_state: 42
+hyperparameter_tuning:
+  n_estimators:
+  - 100
+  - 200
+  - 300
+  - 400
+  - 500
+  criterion:
+  - entropy
+  - gini
+  max_depth:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  min_samples_split:
+  - 1
+  - 2
+  - 3
+  max_leaf_nodes:
+  - 3
+  - 4
+  - 5
+  random_state: 42
+  verbose: 2
+  cv: 10

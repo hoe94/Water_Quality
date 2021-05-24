@@ -20,3 +20,9 @@ stages:
     - src/standardization.py
     - data/processed/train_waterq.csv
     - data/processed/test_waterq.csv
+
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py
+    deps:
+    - src/hyperparameter_tuning.py
+

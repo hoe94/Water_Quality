@@ -6,3 +6,19 @@ split_data:
     test_path: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/data/processed/test_waterq.csv
     test_size: 0.2
     random_state: 42
+
+algorithm: random_forest
+
+hyperparameter_tuning:
+    random_forest:
+        n_estimators: [200, 500]
+        criterion: ['entropy', 'gini']
+        max_depth: [4, 5]
+        min_samples_split: [1, 2]
+        max_leaf_nodes: [4, 5]
+        random_state: 42
+        verbose: 2
+        cv: 10
+
+    gradient_boosting:
+
