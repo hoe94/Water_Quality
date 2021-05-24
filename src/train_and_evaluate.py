@@ -16,8 +16,9 @@ import pickle
 def train_model(config):
     train_x_scaled, test_x_scaled, train_y, test_y = standardization(config)
     #check the model exist in saved_models path
+    print(len(os.listdir(config.model_path)))
 
-    if len(os.listdir(config.model_path)) != 0:
+    if (os.path.exists(config.base_model.random_forest) & os.path.exists(config.base_model.gradient_boosting)):
         if (config.algorithm == "random_forest"):
             rf = RandomForestClassifier( n_estimators = config.parameters.random_forest.n_estimators,
                                          criterion = config.parameters.random_forest.criterion,
@@ -52,7 +53,7 @@ def train_model(config):
             rf.fit(train_x_scaled, train_y)
             rf_y_pred = rf.predict(test_x_scaled)
             print(accuracy_score(test_y, rf_y_pred))
-            with open( os.path.join(config.model_path, 'model.pkl'), 'wb')as file:
+            with open( os.path.join(config.model_path, 'random_forest_base_model.pkl'), 'wb')as file:
                 pickle.dump(rf, file)
 
         elif (config.algorithm == "gradient_boosting"):
@@ -67,7 +68,7 @@ def train_model(config):
             gb.fit(train_x_scaled, train_y)
             gb_y_pred = gb.predict(test_x_scaled)
             print(accuracy_score(test_y, gb_y_pred))
-            with open( os.path.join(config.model_path, 'model.pkl'), 'wb')as file:
+            with open( os.path.join(config.model_path, 'gradient_boosting_base_model.pkl'), 'wb')as file:
                 pickle.dump(gb, file)
 
 if __name__ == "__main__":
