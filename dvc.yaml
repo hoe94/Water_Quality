@@ -15,8 +15,8 @@ stages:
     - data/processed/test_waterq.csv
 
   feature_scaling:
-    cmd: python src/feature_scaling.py
+    cmd: python src/standardization.py
     deps:
-    - src/feature_scaling.py
+    - src/standardization.py
     - data/processed/train_waterq.csv
     - data/processed/test_waterq.csv

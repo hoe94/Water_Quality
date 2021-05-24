@@ -26,7 +26,7 @@ stages:
       md5: 102411750eb07e5aa159675023e68db6
       size: 442370
   feature_scaling:
-    cmd: python src/feature_scaling.py
+    cmd: python src/standardization.py
     deps:
     - path: data/processed/test_waterq.csv
       md5: da0247367fcfac996dd916b0f9d2d92a
@@ -34,6 +34,6 @@ stages:
     - path: data/processed/train_waterq.csv
       md5: 102411750eb07e5aa159675023e68db6
       size: 442370
-    - path: src/feature_scaling.py
-      md5: c0acc254f484bb5b1ecc1f44be65dc42
+    - path: src/standardization.py
+      md5: af4e495630a56f50cd9d13d99f75838f
       size: 677
