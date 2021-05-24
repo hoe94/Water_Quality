@@ -9,6 +9,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import GridSearchCV
 
+#Hyperparameter Tuning on Random Forest & Gradient Boosting Algorithm
+
 @hydra.main(config_name= '../config.yaml')
 def Parameter(config):
 

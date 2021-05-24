@@ -3,6 +3,7 @@ import pandas as pd
 
 @hydra.main(config_name = '../config.yaml')
 def load_data(config):
+    # load the dataset from data/raw
     df = pd.read_csv(config.dataset.raw, sep = ',')
     return df
 

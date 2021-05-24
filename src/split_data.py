@@ -3,6 +3,7 @@ import pandas as pd
 from load_data import load_data
 from sklearn.model_selection import train_test_split
 
+#Handle the missing data by imputing Mean Value
 @hydra.main(config_name = '../config.yaml')
 def handle_missing_data(config):
     df = load_data(config)
@@ -10,7 +11,7 @@ def handle_missing_data(config):
         df.loc[df[feature].isnull(), feature] = df[feature].mean()
     return df
 
-
+#Split the dataset into train, test set
 @hydra.main(config_name = '../config.yaml')
 def split_data(config):
     train_path = config.split_data.train_path

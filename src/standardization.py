@@ -2,6 +2,7 @@ import hydra
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
+# Using standardization formula (x-u / standard deviation) to standardize all features value
 @hydra.main(config_name = '../config.yaml')
 def standardization(config):
     

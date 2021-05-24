@@ -13,10 +13,16 @@ import pickle
 
 @hydra.main(config_name= '../config.yaml')
 
+#26.5.2021
+#1. new function for eval metric (accuracy, precision, recall, f1 ratio)
+#1. create new folder, store the json result
+#2. implement mlflow
+#2.1 write json result
+#3. retrain the base model with export the result & params
+
 def train_model(config):
     train_x_scaled, test_x_scaled, train_y, test_y = standardization(config)
     #check the model exist in saved_models path
-    print(len(os.listdir(config.model_path)))
 
     if (os.path.exists(config.base_model.random_forest) & os.path.exists(config.base_model.gradient_boosting)):
         if (config.algorithm == "random_forest"):
@@ -41,7 +47,7 @@ def train_model(config):
             gb_y_pred = gb.predict(test_x_scaled)
             print(accuracy_score(test_y, gb_y_pred))
 
-    #Hyperparameter Tuning for selected algorithm
+    #Hyperparameter Tuning for selected algorithm if the base model doesn't exist
     else: 
         if (config.algorithm == "random_forest"):
             n_estimators, criterion, max_depth, max_leaf_nodes = Parameter(config)
