@@ -7,11 +7,11 @@ split_data:
     test_size: 0.2
     random_state: 42
 
-algorithm: gradient_boosting
+algorithm: random_forest
 
 parameters:
     random_forest:
-        n_estimators: 200
+        n_estimators: 300
         criterion: gini
         max_depth: 5
         max_leaf_nodes: 5
@@ -32,6 +32,7 @@ model_path: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps
 base_model: 
     random_forest: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/saved_models/random_forest_base_model.pkl
     gradient_boosting: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/saved_models/gradient_boosting_base_model.pkl
+results_path: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/results
 
 hyperparameter_tuning:
     random_forest:
