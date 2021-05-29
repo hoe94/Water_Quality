@@ -7,7 +7,13 @@ split_data:
     test_size: 0.2
     random_state: 42
 
-algorithm: random_forest
+mlflow_config:
+  experiment_name: water_quality
+  run_name: gradient_boosting
+  remote_server_uri: http://127.0.0.1:5000/
+
+#Training & evaluate
+algorithm: gradient_boosting
 
 parameters:
     random_forest:
@@ -19,7 +25,7 @@ parameters:
         verbose: 2
         cv: 10    
     gradient_boosting:
-        learning_rate: 0.3
+        learning_rate: 0.1
         n_estimators: 200
         criterion: mse
         max_depth: 5
@@ -34,6 +40,7 @@ base_model:
     gradient_boosting: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/saved_models/gradient_boosting_base_model.pkl
 results_path: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/results
 
+#Hyperparameter Tuning if base model doesn't exist
 hyperparameter_tuning:
     random_forest:
         n_estimators: [100, 200, 300, 400, 500]
@@ -53,8 +60,3 @@ hyperparameter_tuning:
         random_state: 42
         verbose: 2
         cv: 10
-
-mlflow_config:
-  experiment_name: water_quality
-  run_name: random_forest
-  remote_server_uri: http://127.0.0.1:5000/

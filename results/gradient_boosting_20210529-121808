@@ -1,0 +1,10 @@
+{
+    "log_time": "20210529-121811",
+    "accuracy_score": 0.6585,
+    "precision": 0.5575,
+    "recall": 0.3975,
+    "true_positve": 335,
+    "true_negative": 97,
+    "false_positive": 77,
+    "false_negative": 147
+}
