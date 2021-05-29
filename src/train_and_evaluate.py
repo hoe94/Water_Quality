@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, confu
 
 
 def eval_metric(y_test, y_pred):
-    log_time = time.strftime("%Y%m%d-%H%M%S")
+
     accuracy = accuracy_score(y_test, y_pred)
     precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
@@ -26,35 +26,24 @@ def eval_metric(y_test, y_pred):
     true_negative = c_matrix[1][1]
     false_positive = c_matrix[0][1]
     false_negative = c_matrix[1][0]
-
-    #json_object = {
-    #               "log_time": log_time,
-    #               "accuracy_score": float(np.round(accuracy, 4)),
-    #               "precision": float(np.round(precision, 4)),
-    #               "recall": float(np.round(recall, 4)),
-    #               "true_positve" : int(true_positve),
-    #               "true_negative" : int(true_negative),
-    #               "false_positive" : int(false_positive),
-    #               "false_negative" : int(false_negative),
-    #              }
-    #json_file = json.dumps(json_object, indent = 4)
-    #return json_file
     return accuracy, precision, recall, true_positve, true_negative, false_positive, false_negative
     
+def write_json_file(accuracy, precision, recall, true_positve, true_negative, false_positive, false_negative):
+    log_time = time.strftime("%Y%m%d-%H%M%S")
+    json_object = {
+                   "log_time": log_time,
+                   "accuracy_score": float(np.round(accuracy, 4)),
+                   "precision": float(np.round(precision, 4)),
+                   "recall": float(np.round(recall, 4)),
+                   "true_positve" : int(true_positve),
+                   "true_negative" : int(true_negative),
+                   "false_positive" : int(false_positive),
+                   "false_negative" : int(false_negative),
+                  }
+    json_file = json.dumps(json_object, indent = 4)
+    return json_file
 
 @hydra.main(config_name= '../config.yaml')
-
-#26.5.2021
-#//1. new function for eval metric (accuracy, precision, recall, f1 ratio)
-#//1. create new folder, store the json result
-
-#29.5.2021
-#1. implement mlflow
-#2 write json result
-#3. retrain the base model with export the result & params
-
-
-
 def train_model(config):
     train_x_scaled, test_x_scaled, train_y, test_y = standardization(config)
     log_time = time.strftime("%Y%m%d-%H%M%S")
@@ -83,15 +72,16 @@ def train_model(config):
                 mlflow.log_metric('true_negative', int(true_negative)),
                 mlflow.log_metric('false_positive', int(false_positive)),
                 mlflow.log_metric('false_negative', int(false_negative)), 
-                
+
                 mlflow.log_param('n_estimators', rf.n_estimators),
                 mlflow.log_param('criterion', rf.criterion),
                 mlflow.log_param('max_depth', rf.max_depth),
                 mlflow.log_param('max_leaf_nodes', rf.max_leaf_nodes),
 
                 mlflow.sklearn.log_model(rf,"RandomForest")
-                #with open( os.path.join(config.results_path, f"random_forest_{log_time}"), 'w')as file:
-                #    file.write(json_file)
+                json_file = write_json_file(accuracy, precision, recall, true_positve, true_negative, false_positive, false_negative)
+                with open( os.path.join(config.results_path, f"random_forest_{log_time}"), 'w')as file:
+                    file.write(json_file)
             
             elif(config.algorithm == "gradient_boosting"):
                 gb = GradientBoostingClassifier( learning_rate = config.parameters.gradient_boosting.learning_rate,
