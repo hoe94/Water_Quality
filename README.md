@@ -11,3 +11,9 @@ run the dvc code
 dvc init
 dvc repro
 ```
+
+open the mlflow server
+
+```bash
+mlflow server
+```
