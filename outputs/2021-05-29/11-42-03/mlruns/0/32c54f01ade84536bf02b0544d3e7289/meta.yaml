@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Hoe/Desktop/Learning/Python/Project%206%20-%20Water%20Quality%20MLOps/outputs/2021-05-29/11-42-03/mlruns/0/32c54f01ade84536bf02b0544d3e7289/artifacts
+end_time: 1622259725493
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 32c54f01ade84536bf02b0544d3e7289
+run_uuid: 32c54f01ade84536bf02b0544d3e7289
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1622259724074
+status: 4
+tags: []
+user_id: Hoe

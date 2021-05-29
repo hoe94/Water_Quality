@@ -54,3 +54,7 @@ hyperparameter_tuning:
         verbose: 2
         cv: 10
 
+mlflow_config:
+  experiment_name: water_quality
+  run_name: random_forest
+  remote_server_uri: http://127.0.0.1:5000/
