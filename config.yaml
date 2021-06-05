@@ -12,11 +12,11 @@ undersampling:
 
 mlflow_config:
   experiment_name: water_quality
-  run_name: random_forest
+  run_name: gradient_boosting
   remote_server_uri: http://127.0.0.1:5000/
 
 #Training & evaluate
-algorithm: random_forest
+algorithm: gradient_boosting
 
 #Validation Testing
 selected_model: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/saved_models/gradient_boosting_20210529-123142.pkl
@@ -31,7 +31,7 @@ parameters:
         verbose: 2
         cv: 10    
     gradient_boosting:
-        learning_rate: 0.1
+        learning_rate: 0.3
         n_estimators: 200
         criterion: mse
         max_depth: 5

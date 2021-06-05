@@ -148,15 +148,15 @@ def train_model(config):
                 mlflow.log_param('max_depth', rf.max_depth),
                 mlflow.log_param('max_leaf_nodes', rf.max_leaf_nodes),
 
-                mlflow.sklearn.log_model(rf,"RandomForest_Base_Model")
+                mlflow.sklearn.log_model(rf,"RandomForest_based_model")
 
                 #Export the model to [saved_models]
-                with open( os.path.join(config.model_path, f"random_forest_base_model{log_time}.pkl"), 'wb')as file:
+                with open( os.path.join(config.model_path, f"random_forest_base_model.pkl"), 'wb')as file:
                     pickle.dump(rf, file)
 
                 #Write the metric eval score & export the json file to [results]
                 json_file = write_json_file(accuracy, precision, recall, true_positve, true_negative, false_positive, false_negative)
-                with open( os.path.join(config.results_path, f"random_forest_base_model{log_time}"), 'w')as file:
+                with open( os.path.join(config.results_path, f"random_forest_base_model"), 'w')as file:
                     file.write(json_file)
                 #print(accuracy_score(test_y, rf_y_pred))
     
@@ -171,9 +171,31 @@ def train_model(config):
                                             )
                 gb.fit(train_x_scaled, train_y)
                 gb_y_pred = gb.predict(test_x_scaled)
-                print(accuracy_score(test_y, gb_y_pred))
-                with open( os.path.join(config.model_path, 'gradient_boosting_base_model.pkl'), 'wb')as file:
+                accuracy, precision, recall, true_positve, true_negative, false_positive, false_negative = eval_metric(test_y, gb_y_pred)
+                mlflow.log_metric('accuracy_score', float(np.round(accuracy, 4))),
+                mlflow.log_metric('precision', np.round(precision, 4)),
+                mlflow.log_metric('recall', np.round(recall, 4)),
+                mlflow.log_metric('true_positive', int(true_positve)),
+                mlflow.log_metric('true_negative', int(true_negative)),
+                mlflow.log_metric('false_positive', int(false_positive)),
+                mlflow.log_metric('false_negative', int(false_negative)), 
+
+                mlflow.log_param('learning_rate', gb.learning_rate),
+                mlflow.log_param('n_estimators', gb.n_estimators),
+                mlflow.log_param('criterion', gb.criterion),
+                mlflow.log_param('max_depth', gb.max_depth),
+                mlflow.log_param('max_leaf_nodes', gb.max_leaf_nodes),
+
+                mlflow.sklearn.log_model(gb,"GradientBoosting_based_model")
+
+                #Export the model to [saved_models]
+                with open( os.path.join(config.model_path, f"gradient_boosting_based_model.pkl"), 'wb')as file:
                     pickle.dump(gb, file)
+                
+                #Write the metric eval score & export the json file to [results]
+                json_file = write_json_file(accuracy, precision, recall, true_positve, true_negative, false_positive, false_negative)
+                with open( os.path.join(config.results_path, f"gradient_boosting_based_model"), 'w')as file:
+                    file.write(json_file)
 
 if __name__ == "__main__":
     train_model()
