@@ -1,0 +1,42 @@
+{
+    "ph": {
+        "min": 0.00,
+        "max": 14.00
+    },
+    "Hardness": {
+        "min": 47.43,
+        "max": 323.12
+    },
+    "Solids": {
+        "min": 320.94,
+        "max": 61227.20
+    },
+    "Chloramines": {
+        "min": 0.35,
+        "max": 13.13
+    },
+    "Sulfate": {
+        "min": 129.00,
+        "max": 481.03
+    },
+    "Conductivity": {
+        "min": 181.48,
+        "max": 753.34
+    },
+    "Organic_carbon": {
+        "min": 2.20,
+        "max": 28.30
+    },
+    "Trihalomethanes": {
+        "min": 0.74,
+        "max": 124.00
+    },
+    "Turbidity": {
+        "min": 1.45,
+        "max": 6.74
+    },
+    "Potability": {
+        "min": 0,
+        "max": 1
+    }
+}
