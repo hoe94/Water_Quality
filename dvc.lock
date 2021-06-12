@@ -16,8 +16,8 @@ stages:
       md5: aafa784ad6c2cd060df038c343956a1d
       size: 525187
     - path: src/split_data.py
-      md5: bba3ea7080c3954490e7dcfd85e1b729
-      size: 881
+      md5: 290f7dc7178b811d63ae85d24a9c1bb9
+      size: 969
     outs:
     - path: data/processed/test_waterq.csv
       md5: da0247367fcfac996dd916b0f9d2d92a
@@ -35,8 +35,8 @@ stages:
       md5: 102411750eb07e5aa159675023e68db6
       size: 442370
     - path: src/standardization.py
-      md5: af4e495630a56f50cd9d13d99f75838f
-      size: 677
+      md5: 78f164b164d7f27c97cd48b01c187378
+      size: 1379
   train_and_evaluate:
     cmd: python src/train_and_evaluate.py
     deps:

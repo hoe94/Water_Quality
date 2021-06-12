@@ -10,8 +10,7 @@ import time
 from flask import Flask, request, jsonify
 import prediction
 
-#12.6.2021
-#1. exception handling (columns value range, columns name)
+#19.6.2021
 #2. Write the json request & prediction into MySQL
 #3. Deploy into AWS EC2
 
