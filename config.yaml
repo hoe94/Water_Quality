@@ -19,7 +19,7 @@ mlflow_config:
 algorithm: gradient_boosting
 
 #Validation Testing
-selected_model: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/saved_models/gradient_boosting_20210605-153930.pkl
+selected_model: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/saved_models/gradient_boosting_20210619-162003.pkl
 
 parameters:
     random_forest:

@@ -62,7 +62,6 @@ def api_response(dict_request):
             prediction = model.predict(data).tolist()[0]
             response = {'Prediction Result': int(prediction)}
             return response
-
     except NotInCols as e:
         response = {"the_expected_colums_name": read_schema(), "response": str(e) }
         return response   
@@ -74,15 +73,15 @@ def api_response(dict_request):
     except Exception as e:
         response = {"The expected_range": read_schema(),"response": str(e) }
         return response
-#if __name__ == "__main__":
-#    validation_input({
-#    "ph": 7,
-#    "Hardness": 180,
-#    "Solids": 20000,
-#    "Chloramines": 7,
-#    "Sulfate": 200,
-#    "Conductivity": 500,
-#    "Organic_carbon": 13,
-#    "Trihalomethanes": 66,
-#    "Turbidity": 4
-#})
+if __name__ == "__main__":
+    api_response({
+    "ph": 7,
+    "Hardness": 180,
+    "Solids": 20000,
+    "Chloramines": 7,
+    "Sulfate": 200,
+    "Conductivity": 500,
+    "Organic_carbon": 13,
+    "Trihalomethanes": 66,
+    "Turbidity": 4
+})

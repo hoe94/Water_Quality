@@ -8,7 +8,7 @@ import pickle
 import time
 
 from flask import Flask, request, jsonify
-from flask_mysqldb import MySQL
+#from flask_mysqldb import MySQL
 import prediction
 
 #19.6.2021
@@ -17,10 +17,12 @@ import prediction
 
 app = Flask(__name__)
 
-def read_params(config_path = '../config.yaml'):
-    with open(config_path) as yaml_file:
-        config = yaml.safe_load(yaml_file)
-    return config
+#db = yaml.load('../db.yaml',  Loader = yaml.FullLoader)
+#app.config["MYSQL_HOST"] = db["mysql_host"]
+#app.config['MYSQL_USER'] = db['mysql_user']
+#app.config['MYSQL_PASSWORD'] = db['mysql_password']
+#app.config['MYSQL_DB'] = db['mysql_db']
+#mysql = MySQL(app)
 
 @app.route('/', methods = ["GET", "POST"])
 def index():
@@ -28,8 +30,6 @@ def index():
         if request.json:
             response = prediction.api_response(request.json)
             return jsonify(response)
-            #ph = request.json["ph"]
-            #return jsonify(ph)
     else:
         return None
         
