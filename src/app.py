@@ -8,11 +8,12 @@ import pickle
 import time
 
 from flask import Flask, request, jsonify
+from flask_mysqldb import MySQL
 import prediction
 
 #19.6.2021
-#2. Write the json request & prediction into MySQL
-#3. Deploy into AWS EC2
+#1. Write the json request & prediction into AWS RDS MySQL
+#2. Deploy into AWS EC2
 
 app = Flask(__name__)
 
@@ -27,6 +28,8 @@ def index():
         if request.json:
             response = prediction.api_response(request.json)
             return jsonify(response)
+            #ph = request.json["ph"]
+            #return jsonify(ph)
     else:
         return None
         

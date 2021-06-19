@@ -17,3 +17,9 @@ open the mlflow server
 ```bash
 mlflow server
 ```
+
+the command to install flask-mysqldb
+```bash
+conda install -c conda-forge implicit
+pip install flask-mysqldb
+```
