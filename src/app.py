@@ -8,27 +8,48 @@ import pickle
 import time
 
 from flask import Flask, request, jsonify
-#from flask_mysqldb import MySQL
+import mysql.connector
 import prediction
 
 #19.6.2021
-#1. Write the json request & prediction into AWS RDS MySQL
+#1. Write the json request & prediction into MySQL
 #2. Deploy into AWS EC2
 
 app = Flask(__name__)
 
-#db = yaml.load('../db.yaml',  Loader = yaml.FullLoader)
-#app.config["MYSQL_HOST"] = db["mysql_host"]
-#app.config['MYSQL_USER'] = db['mysql_user']
-#app.config['MYSQL_PASSWORD'] = db['mysql_password']
-#app.config['MYSQL_DB'] = db['mysql_db']
-#mysql = MySQL(app)
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="asdf1234",
+    database="testing_sql"
+)
 
 @app.route('/', methods = ["GET", "POST"])
 def index():
     if request.method == "POST":
         if request.json:
-            response = prediction.api_response(request.json)
+            mycursor = db.cursor()
+
+            pH  = request.json["ph"]
+            Hardness = request.json["Hardness"]
+            Solids =    request.json["Solids"]
+            Chloramines =     request.json["Chloramines"]
+            Sulfate =     request.json["Sulfate"]
+            Conductivity =    request.json["Conductivity"]
+            Organic_carbon =     request.json["Organic_carbon"]
+            Trihalomethanes =    request.json["Trihalomethanes"]
+            Turbidity =    request.json["Turbidity"]
+            predict_result = prediction.api_response(request.json)
+
+            mycursor.execute("""INSERT INTO water_quality(
+                            pH, Hardness, Solids, Chloramines, Sulfate, Conductivity,
+                            Organic_carbon, Trihalomethanes, Turbidity, Potability) 
+                            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
+                            (pH, Hardness, Solids, Chloramines, Sulfate, Conductivity,
+                            Organic_carbon, Trihalomethanes, Turbidity, predict_result))
+
+            db.commit()
+            response = {"Prediction": int(predict_result)}
             return jsonify(response)
     else:
         return None

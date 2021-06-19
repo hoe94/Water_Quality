@@ -60,8 +60,8 @@ def api_response(dict_request):
         if validation_input(dict_request):
             data = np.array([list(dict_request.values())])
             prediction = model.predict(data).tolist()[0]
-            response = {'Prediction Result': int(prediction)}
-            return response
+            #response = {'Prediction Result': int(prediction)}
+            return prediction
     except NotInCols as e:
         response = {"the_expected_colums_name": read_schema(), "response": str(e) }
         return response   
