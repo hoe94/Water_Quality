@@ -11,9 +11,10 @@ from flask import Flask, request, jsonify
 import mysql.connector
 import prediction
 
-#19.6.2021
-#1. Write the json request & prediction into MySQL
+#26.6.2021
+#1. Change the db into production db
 #2. Deploy into AWS EC2
+#3. Deploy the model into AWS EKS
 
 app = Flask(__name__)
 

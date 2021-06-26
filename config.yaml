@@ -8,7 +8,7 @@ split_data:
     random_state: 42
 
 undersampling: 
-    ratio: 0.6
+    ratio: 0.9
 
 mlflow_config:
   experiment_name: water_quality
@@ -19,7 +19,7 @@ mlflow_config:
 algorithm: gradient_boosting
 
 #Validation Testing
-selected_model: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/saved_models/gradient_boosting_20210619-162003.pkl
+selected_model: C:/Users/Hoe/Desktop/Learning/Python/Project 6 - Water Quality MLOps/saved_models/gradient_boosting_20210626-115333.pkl
 
 parameters:
     random_forest:

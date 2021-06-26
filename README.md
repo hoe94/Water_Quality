@@ -23,3 +23,13 @@ mlflow server
 conda install -c conda-forge implicit
 pip install flask-mysqldb
 ```
+
+install the mysql library
+```bash
+pip install  mysql-connector-python
+```
+
+26/6/2021 - Hydra-core library please maintain to 1.0 version
+```bash
+pip install hdyra-core==1.0
+```

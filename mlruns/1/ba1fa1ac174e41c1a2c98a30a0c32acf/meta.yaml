@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/1/ba1fa1ac174e41c1a2c98a30a0c32acf/artifacts
+end_time: 1624679615319
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: ba1fa1ac174e41c1a2c98a30a0c32acf
+run_uuid: ba1fa1ac174e41c1a2c98a30a0c32acf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1624679613466
+status: 3
+tags: []
+user_id: Hoe
