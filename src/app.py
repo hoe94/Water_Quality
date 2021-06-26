@@ -22,7 +22,7 @@ db = mysql.connector.connect(
     host="localhost",
     user="root",
     passwd="asdf1234",
-    database="testing_sql"
+    database="water_quality"
 )
 
 @app.route('/', methods = ["GET", "POST"])
@@ -42,7 +42,7 @@ def index():
             Turbidity =    request.json["Turbidity"]
             predict_result = prediction.api_response(request.json)
 
-            mycursor.execute("""INSERT INTO water_quality(
+            mycursor.execute("""INSERT INTO water_q(
                             pH, Hardness, Solids, Chloramines, Sulfate, Conductivity,
                             Organic_carbon, Trihalomethanes, Turbidity, Potability) 
                             VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""",
